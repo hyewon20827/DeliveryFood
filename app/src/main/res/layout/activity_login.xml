@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.deliveryfood.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.LoginActivity">
+
+        <EditText
+            android:id="@+id/IdEditText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_editText_width_size"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:ems="10"
+            android:hint="@string/login_id_editText_hint"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/PwEditText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_editText_width_size"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="@string/login_pw_editText_hint"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/Sign_In_Btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/IdEditText" />
+
+        <Button
+            android:id="@+id/Sign_In_Btn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_button_width_size"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:backgroundTint="@color/Main_Color"
+            android:text="@string/login_signin_btn_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PwEditText" />
+
+        <TextView
+            android:id="@+id/Search_Id_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/search_id_textView_text"
+            app:layout_constraintEnd_toStartOf="@+id/Partition_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Sign_In_Btn" />
+
+        <TextView
+            android:id="@+id/Search_Pw_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="120dp"
+            android:text="@string/search_pw_textView_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Partition_text"
+            app:layout_constraintTop_toBottomOf="@+id/Sign_In_Btn" />
+
+        <TextView
+            android:id="@+id/Partition_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
+            android:text="|"
+            app:layout_constraintBottom_toTopOf="@+id/Sign_Up_Btn"
+            app:layout_constraintEnd_toStartOf="@+id/Search_Pw_TextView"
+            app:layout_constraintStart_toEndOf="@+id/Search_Id_TextView"
+            app:layout_constraintTop_toBottomOf="@+id/Sign_In_Btn" />
+
+        <Button
+            android:id="@+id/Sign_Up_Btn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_button_width_size"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/login_signup_btn_text"
+            android:textColor="@color/Main_Color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Partition_text"
+            app:strokeColor="@color/Main_Color"
+            app:strokeWidth="2sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

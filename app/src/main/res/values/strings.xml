@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">deliveryfood</string>
+    <string name="myPage_name">마이컬리</string>
+    <string name="search_name">검색</string>
+    <string name="category_name">카테고리</string>
+    <string name="recommand_name">추천</string>
+    <string name="home_name">홈</string>
+    <string name="cart_name">장바구니</string>
+    <string name="address_name">배송지</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_id_editText_hint">아이디를 입력해주세요</string>
+    <string name="login_pw_editText_hint">비밀번호를 입력해주세요</string>
+    <string name="login_signin_btn_text">로그인</string>
+    <string name="search_id_textView_text">아이디 찾기</string>
+    <string name="search_pw_textView_text">비밀번호 찾기</string>
+    <string name="login_signup_btn_text">회원가입</string>
+    <string name="delivery_address">배송지</string>
+    <string name="delivery_explanation">배송지에 따라 상품 정보가 달라질 수 있습니다.</string>
+    <string name="add_new_address">새 배송지 추가</string>
+</resources>
