@@ -17,4 +17,13 @@
     <string name="delivery_address">배송지</string>
     <string name="delivery_explanation">배송지에 따라 상품 정보가 달라질 수 있습니다.</string>
     <string name="add_new_address">새 배송지 추가</string>
+    <string name="title_activity_webview2">WebviewActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

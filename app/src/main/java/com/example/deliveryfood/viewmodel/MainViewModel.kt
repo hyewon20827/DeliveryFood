@@ -1,16 +1,11 @@
 package com.example.deliveryfood.viewmodel
 
-import android.util.Log
-import android.view.MenuItem
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.deliveryfood.R
 import com.example.deliveryfood.base.BaseViewModel
-import com.example.deliveryfood.model._enum.ActivityType
-import com.example.deliveryfood.model._enum.PageType
-import com.example.deliveryfood.model.service.RetrofitService
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
+import com.example.deliveryfood.utils._enum.ActivityType
+import com.example.deliveryfood.utils._enum.PageType
 import org.koin.java.KoinJavaComponent.inject
 import retrofit2.Retrofit
 import java.lang.IllegalArgumentException
@@ -31,16 +26,20 @@ class MainViewModel() : BaseViewModel() {
     private val _currentMenuItemId = MutableLiveData(R.id.nav_home)
     val currentMenuItemId : LiveData<Int> = _currentMenuItemId
 
+    //로컬 DB 접근을 위한 Dao
+//    private val memberDao = DeliveryfoodRepository.get()._memberDao
+
     //원격 서버에 있는 데이터베이스에 접근하기 위한 Retrofit2 객체 의존성 주입 받는 변수
     private val retrofit : Retrofit by inject(Retrofit::class.java)
-    private val _service : RetrofitService
-        get() = retrofit.create(RetrofitService::class.java)
+//    private val _service : RetrofitService
+//        get() = retrofit.create(RetrofitService::class.java)
 
-    fun selectUser(MEM_ID : String, MEM_PW : String) = _service.selectUser(MEM_ID, MEM_PW).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
-        Log.d(TAG, "success ${it.toString()}")
-    },{
-        Log.d(TAG, it.toString())
-    })
+//    fun selectUser(MEM_ID : String, MEM_PW : String) = _service.selectUser(MEM_ID, MEM_PW).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
+//        Log.d(TAG, "success ${it}")
+//        CurrentUser.currentUser = it
+//    },{
+//        Log.d(TAG, it.toString())
+//    })
 
     fun changeActivity(MenuItem : Int){
         _currentActivity.value = when(MenuItem){
@@ -68,7 +67,7 @@ class MainViewModel() : BaseViewModel() {
         return true
     }
 
-    private fun getPageType(menuItemId : Int) : PageType{
+    private fun getPageType(menuItemId : Int) : PageType {
         return when(menuItemId){
             R.id.nav_home -> PageType.PAGE1
             R.id.nav_recommand -> PageType.PAGE2

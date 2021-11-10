@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="400dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:context=".view.activity.DeliveryAdressActivity"
-        android:layout_margin="5dp">
+        android:padding="3dp">
 
         <TextView
             android:id="@+id/delivery_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
             android:text="@string/delivery_address"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -27,6 +30,7 @@
             android:id="@+id/delivery_explanation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
             android:text="@string/delivery_explanation"
             android:textColor="@color/Secondary_color_gray1"
@@ -39,15 +43,15 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/delivery_address_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_width="400dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/add_new_address"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/delivery_explanation"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:layout_constraintTop_toBottomOf="@+id/delivery_explanation" />
 
         <TextView
             android:id="@+id/add_new_address"
@@ -57,6 +61,7 @@
             android:text="@string/add_new_address"
             android:textSize="13sp"
             android:gravity="center|start"
+            android:clickable="true"
             android:drawableStart="@drawable/ic_baseline_add_circle_outline_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package com.example.deliveryfood.model._enum
+package com.example.deliveryfood.utils._enum
 
 enum class PageType(val title : String, val tag : String) {
     PAGE1("page1", "nav_home"),

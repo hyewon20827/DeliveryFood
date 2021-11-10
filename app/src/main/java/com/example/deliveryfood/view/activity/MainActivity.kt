@@ -16,8 +16,8 @@ import androidx.fragment.app.Fragment
 import com.example.deliveryfood.R
 import com.example.deliveryfood.base.BaseActivity
 import com.example.deliveryfood.databinding.ActivityMainBinding
-import com.example.deliveryfood.model._enum.ActivityType
-import com.example.deliveryfood.model._enum.PageType
+import com.example.deliveryfood.utils._enum.ActivityType
+import com.example.deliveryfood.utils._enum.PageType
 import com.example.deliveryfood.view.fragment.*
 import com.example.deliveryfood.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -59,9 +59,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             autoLoginPw = sharedPreferences.getString("autoLoginPw", "")
         }
         //sharedPreference에 자동 로그인 id, pw 정보가 있다면 login하고 session 등록할 것
-        if(autoLoginId?.isNotEmpty()!! && autoLoginPw?.isNotEmpty()!!)
-            viewmodel.selectUser(autoLoginId!!, autoLoginPw!!)
-//            viewmodel.selectUser("okewon", "dhrgP0827*")
+//        if(autoLoginId?.isNotEmpty()!! && autoLoginPw?.isNotEmpty()!!)
+//            viewmodel.selectUser(autoLoginId!!, autoLoginPw!!)
     }
 
     override fun initDataBinding() {
@@ -123,7 +122,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private fun changeActivity(activityType : ActivityType){
         val activity = when(activityType.tag){
-            "delivery_address_activity" -> DeliveryAdressActivity()
+            "delivery_address_activity" -> DeliveryAddressActivity()
             "cart_activity" -> CartActivity.newInstance(activityType.title)
             else -> IllegalArgumentException("not found enum tag")
         }
