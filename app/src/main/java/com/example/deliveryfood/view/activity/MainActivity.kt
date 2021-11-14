@@ -89,18 +89,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         /*
         *    현재 mainactivity에 replace된 currentFragment LiveData를 감지하는 구간
         */
-        viewmodel.currentPageType.observe(this){
-            changeFragment(it)
-        }
-
         /*
         *   BottomNavigation의 선택된 itemId를 변경하기 위해 LiveData를 감지하는 구간
         */
-        viewmodel.currentMenuItemId.observe(this){
-            viewDataBinding.navView.selectedItemId = it
-        }
-
         viewmodel.also {    it ->
+
             it.currentPageType.observe(this){   pageType ->
                 changeFragment(pageType)
             }

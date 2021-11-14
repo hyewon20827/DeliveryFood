@@ -17,11 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Deliveryfood"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".view.activity.WebviewActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_webview2"
-            android:theme="@style/Theme.Deliveryfood.NoActionBar" />
+
         <activity
             android:name=".view.activity.LoginActivity"
             android:exported="true"></activity>

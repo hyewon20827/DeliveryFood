@@ -1,6 +1,7 @@
 package com.example.deliveryfood.view.activity
 
 import android.app.Activity
+import android.app.ActivityManager
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity.BOTTOM
@@ -10,6 +11,9 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deliveryfood.R
 import com.example.deliveryfood.databinding.ActivityDeliveryAdressBinding
@@ -17,11 +21,10 @@ import com.example.deliveryfood.databinding.DeliveryAddressListBinding
 import com.example.deliveryfood.viewmodel.DeliveryAddressViewModel
 import com.hyewon.deliveryfood.vo.Delivery_Address
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 
-class DeliveryAddressActivity : Activity() {
+class DeliveryAddressActivity : Activity(), LifecycleOwner {
 
     private val TAG = "DeliveryAddressActivity"
 
@@ -34,13 +37,28 @@ class DeliveryAddressActivity : Activity() {
 
     private lateinit var addressListadapter : DeliveryAddressAdapter
 
+    private val lifecycleRegistry by lazy { LifecycleRegistry(this) }
+
+    override fun getLifecycle(): Lifecycle {
+        return lifecycleRegistry
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewDataBinding = ActivityDeliveryAdressBinding.inflate(layoutInflater)
         activityPopupSetting()
         setContentView(viewDataBinding.root)
 
-        updateUI()
+        viewmodel.changeAddressListStatus(true)
+
+        viewmodel.also { it ->
+            it.address_list_change_status.observe(this){    status ->
+                if(status){
+                    updateUI()
+                    it.changeAddressListStatus(false)
+                }
+            }
+        }
 
         viewDataBinding.apply {
             this.addNewAddress.setOnClickListener { addNewAddress() }
@@ -63,6 +81,7 @@ class DeliveryAddressActivity : Activity() {
                 it.forEach {
                     addressListadapter.addUserAddress(it)
                 }
+                viewmodel.changeAddressListStatus(false)
             }, {
                 Log.d(TAG, "error occured!!")
             })
@@ -81,6 +100,10 @@ class DeliveryAddressActivity : Activity() {
             list.add(address)
         }
 
+        fun resetList(){
+            list.clear()
+        }
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressHolder {
             listBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.delivery_address_list, parent, false)
             return AddressHolder(listBinding)
@@ -93,7 +116,7 @@ class DeliveryAddressActivity : Activity() {
                     val clickedItem = list[position]
                     viewmodel.changeDeliveryAddress(clickedItem.MEM_ID, clickedItem.DELIVERY_ADDRESS_MAIN_ADDRESS).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
-                            Log.d(TAG, it.toString())
+                            viewmodel.changeAddressListStatus(true)
                         },{
                             Log.d("FAIL", it.toString())
                         })
@@ -126,5 +149,4 @@ class DeliveryAddressActivity : Activity() {
             }
         }
     }
-
 }

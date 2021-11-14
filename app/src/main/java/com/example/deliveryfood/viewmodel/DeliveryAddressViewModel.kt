@@ -16,6 +16,9 @@ class DeliveryAddressViewModel() : BaseViewModel() {
     private val _address_list = MutableLiveData<List<Delivery_Address>>()
     val address_list : LiveData<List<Delivery_Address>> = _address_list
 
+    private val _address_list_change_status = MutableLiveData<Boolean>(false)
+    val address_list_change_status : LiveData<Boolean> = _address_list_change_status
+
     //로컬 DB 접근을 위한 Dao
 
     //원격 DB 접근을 위한 retrofit2
@@ -26,4 +29,8 @@ class DeliveryAddressViewModel() : BaseViewModel() {
     fun selectUserAddress(MEM_ID : String) = _service.selectUserAddress(MEM_ID)
 
     fun changeDeliveryAddress(MEM_ID : String, DELIVERY_ADDRESS_MAIN_ADDRESS : String) = _service.changeDefaultAddress(MEM_ID, DELIVERY_ADDRESS_MAIN_ADDRESS)
+
+    fun changeAddressListStatus(status : Boolean) {
+        _address_list_change_status.value = status
+    }
 }
