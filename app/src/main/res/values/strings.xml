@@ -23,7 +23,8 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
+    <string name="network_status_negative">네트워크 상태가 좋지 않습니다. 단말기의 데이터 네트워크, Wi-Fi 연결을 확인해주세요. [A1001]</string>
+    <string name="dialog_button_keyword">확인</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

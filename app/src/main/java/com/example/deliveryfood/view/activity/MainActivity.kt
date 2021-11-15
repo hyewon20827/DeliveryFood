@@ -1,6 +1,7 @@
 package com.example.deliveryfood.view.activity
 
 import android.Manifest
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
@@ -8,6 +9,8 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.core.app.ActivityCompat
@@ -18,10 +21,12 @@ import com.example.deliveryfood.base.BaseActivity
 import com.example.deliveryfood.databinding.ActivityMainBinding
 import com.example.deliveryfood.utils._enum.ActivityType
 import com.example.deliveryfood.utils._enum.PageType
+import com.example.deliveryfood.utils.network.NetworkManager
 import com.example.deliveryfood.view.fragment.*
 import com.example.deliveryfood.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.IllegalArgumentException
+import java.lang.System.exit
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
@@ -32,7 +37,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 Manifest.permission.INTERNET,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.CAMERA
+                Manifest.permission.CAMERA,
+                Manifest.permission.ACCESS_NETWORK_STATE
             )
         }
 
@@ -53,11 +59,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private lateinit var sharedPreferences : SharedPreferences
 
     override fun initStartView() {
-        sharedPreferences = getSharedPreferences("autoLogin", MODE_PRIVATE)
-        autoLoginId = sharedPreferences.getString("autoLoginId", "")
-        if(autoLoginId?.isNotEmpty()!!){
-            autoLoginPw = sharedPreferences.getString("autoLoginPw", "")
-        }
+//        sharedPreferences = getSharedPreferences("autoLogin", MODE_PRIVATE)
+//        autoLoginId = sharedPreferences.getString("autoLoginId", "")
+//        if(autoLoginId?.isNotEmpty()!!){
+//            autoLoginPw = sharedPreferences.getString("autoLoginPw", "")
+//        }
         //sharedPreference에 자동 로그인 id, pw 정보가 있다면 login하고 session 등록할 것
 //        if(autoLoginId?.isNotEmpty()!! && autoLoginPw?.isNotEmpty()!!)
 //            viewmodel.selectUser(autoLoginId!!, autoLoginPw!!)
@@ -69,6 +75,20 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun initAfterBinding() {
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(!NetworkManager.checkNetworkState(this)){
+                AlertDialog.Builder(this).let {
+                    it.setMessage(R.string.network_status_negative)
+                    it.setPositiveButton(R.string.dialog_button_keyword, DialogInterface.OnClickListener { dialogInterface, i ->
+                        exit(0)
+                    })
+                }.create().show()
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,10 +107,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         }
 
         /*
-        *    현재 mainactivity에 replace된 currentFragment LiveData를 감지하는 구간
-        */
-        /*
         *   BottomNavigation의 선택된 itemId를 변경하기 위해 LiveData를 감지하는 구간
+        *   현재 mainactivity에 replace된 currentFragment LiveData를 감지하는 구간
         */
         viewmodel.also {    it ->
 

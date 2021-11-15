@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deliveryfood.R
 import com.example.deliveryfood.databinding.ActivityDeliveryAdressBinding
@@ -51,7 +52,7 @@ class DeliveryAddressActivity : Activity(), LifecycleOwner {
 
         viewmodel.changeAddressListStatus(true)
 
-        viewmodel.also { it ->
+        viewmodel.also {    it ->
             it.address_list_change_status.observe(this){    status ->
                 if(status){
                     updateUI()
@@ -76,12 +77,8 @@ class DeliveryAddressActivity : Activity(), LifecycleOwner {
     private fun updateUI(){
         val list = viewmodel.selectUserAddress("okewon").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(
             {
-                addressListadapter = DeliveryAddressAdapter()
+                addressListadapter = DeliveryAddressAdapter(it)
                 viewDataBinding.deliveryAddressList.adapter = addressListadapter
-                it.forEach {
-                    addressListadapter.addUserAddress(it)
-                }
-                viewmodel.changeAddressListStatus(false)
             }, {
                 Log.d(TAG, "error occured!!")
             })
@@ -91,18 +88,9 @@ class DeliveryAddressActivity : Activity(), LifecycleOwner {
         Toast.makeText(this, "ADD NEW ADDRESS!", Toast.LENGTH_LONG).show()
     }
 
-    private inner class DeliveryAddressAdapter() : RecyclerView.Adapter<DeliveryAddressAdapter.AddressHolder>() {
+    private inner class DeliveryAddressAdapter(val list : List<Delivery_Address>) : RecyclerView.Adapter<DeliveryAddressAdapter.AddressHolder>() {
 
         private lateinit var listBinding : DeliveryAddressListBinding
-        private val list = mutableListOf<Delivery_Address>()
-
-        fun addUserAddress(address : Delivery_Address){
-            list.add(address)
-        }
-
-        fun resetList(){
-            list.clear()
-        }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressHolder {
             listBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.delivery_address_list, parent, false)
@@ -118,7 +106,6 @@ class DeliveryAddressActivity : Activity(), LifecycleOwner {
                         .subscribe({
                             viewmodel.changeAddressListStatus(true)
                         },{
-                            Log.d("FAIL", it.toString())
                         })
                 }
             }
