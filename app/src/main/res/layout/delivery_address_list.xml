@@ -19,6 +19,7 @@
             android:background="@color/Secondary_color_gray3"
             android:gravity="center"
             android:text="기본배송지"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,6 +45,7 @@
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="20dp"
             android:src="@drawable/ic_baseline_check_24"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/divider"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -59,6 +61,7 @@
             app:layout_constraintEnd_toStartOf="@+id/divide_bar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address"
+            android:visibility="gone"
             tools:text="옥혜원" />
 
         <TextView
@@ -71,6 +74,7 @@
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/sending_person_name"
             app:layout_constraintTop_toBottomOf="@id/address"
+            android:visibility="gone"
             android:text="|" />
 
         <TextView
@@ -83,6 +87,7 @@
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/divide_bar"
             app:layout_constraintTop_toBottomOf="@id/address"
+            android:visibility="gone"
             tools:text="010-5548-8424" />
 
 

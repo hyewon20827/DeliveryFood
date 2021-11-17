@@ -4,9 +4,12 @@ import android.Manifest
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.annotation.RequiresApi
@@ -25,8 +28,10 @@ import com.example.deliveryfood.utils.network.NetworkManager
 import com.example.deliveryfood.view.fragment.*
 import com.example.deliveryfood.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.lang.Exception
 import java.lang.IllegalArgumentException
 import java.lang.System.exit
+import java.security.MessageDigest
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 

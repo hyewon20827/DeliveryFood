@@ -17,10 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Deliveryfood"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".view.activity.NewAddressActivity"
+            android:exported="false" />
         <activity
             android:name=".view.activity.LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".view.activity.CartActivity"
             android:exported="true" />
@@ -34,7 +36,6 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -2,6 +2,7 @@ package com.example.deliveryfood.view.activity
 
 import android.app.Activity
 import android.app.ActivityManager
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity.BOTTOM
@@ -85,7 +86,8 @@ class DeliveryAddressActivity : Activity(), LifecycleOwner {
     }
 
     private fun addNewAddress(){
-        Toast.makeText(this, "ADD NEW ADDRESS!", Toast.LENGTH_LONG).show()
+        val intent = Intent(this, NewAddressActivity::class.java)
+        startActivity(intent)
     }
 
     private inner class DeliveryAddressAdapter(val list : List<Delivery_Address>) : RecyclerView.Adapter<DeliveryAddressAdapter.AddressHolder>() {
@@ -121,11 +123,10 @@ class DeliveryAddressActivity : Activity(), LifecycleOwner {
                         "${userAddress.DELIVERY_ADDRESS_MAIN_ADDRESS}  ${userAddress.DELIVERY_ADDRESS_SUB_ADDRESS}"
                     defaultDeliveryAddress.visibility =
                         if (userAddress.DEFAULT_ADDRESS) View.VISIBLE else View.GONE
-                    if (userAddress.SENDING_PHONE_NUMBER == null && userAddress.SENDING_PERSON_NAME == null) {
-                        sendingPersonName.visibility = View.GONE
-                        sendingPhoneNumber.visibility = View.GONE
-                        divideBar.visibility = View.GONE
-                    } else {
+                    if (userAddress.SENDING_PHONE_NUMBER != null && userAddress.SENDING_PERSON_NAME != null) {
+                        sendingPersonName.visibility = View.VISIBLE
+                        sendingPhoneNumber.visibility = View.VISIBLE
+                        divideBar.visibility = View.VISIBLE
                         sendingPersonName.text = userAddress.SENDING_PERSON_NAME
                         sendingPhoneNumber.text = userAddress.SENDING_PHONE_NUMBER
                     }
