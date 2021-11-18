@@ -1,5 +1,6 @@
 package com.example.deliveryfood.view.activity
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import com.example.deliveryfood.R
@@ -30,7 +31,9 @@ class NewAddressActivity : BaseActivity<ActivityNewAddressBinding, DeliveryAddre
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+        }
         supportFragmentManager.beginTransaction().add(R.id.nav_host_fragment_content_new_address, WebviewFragment()).commitAllowingStateLoss()
     }
 

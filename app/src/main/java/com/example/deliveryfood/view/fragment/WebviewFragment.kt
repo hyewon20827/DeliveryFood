@@ -38,12 +38,6 @@ class WebviewFragment : BaseFragment<FragmentFirstBinding, DeliveryAddressViewMo
         }
     }
 
-    private val chromeClient by lazy {
-        object : WebChromeClient(){
-
-        }
-    }
-
     override fun initStartView() {
 
     }
@@ -94,7 +88,7 @@ class WebviewFragment : BaseFragment<FragmentFirstBinding, DeliveryAddressViewMo
         fun processDATA(data : String){
             handler.post(object : Runnable {
                 override fun run() {
-                    Log.d("webview", data)
+                    Log.d("webview", "invoked $data")
                     setWebview()
                 }
             })
