@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.deliveryfood.R
 import com.example.deliveryfood.databinding.ActivityDeliveryAdressBinding
 import com.example.deliveryfood.databinding.DeliveryAddressListBinding
+import com.example.deliveryfood.utils._enum.WebviewPageType
 import com.example.deliveryfood.viewmodel.DeliveryAddressViewModel
 import com.hyewon.deliveryfood.vo.Delivery_Address
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -129,6 +130,10 @@ class DeliveryAddressActivity : Activity(), LifecycleOwner {
                         divideBar.visibility = View.VISIBLE
                         sendingPersonName.text = userAddress.SENDING_PERSON_NAME
                         sendingPhoneNumber.text = userAddress.SENDING_PHONE_NUMBER
+                    }else{
+                        sendingPersonName.visibility = View.GONE
+                        sendingPhoneNumber.visibility = View.GONE
+                        divideBar.visibility = View.GONE
                     }
                     nowSelectedAddress.visibility =
                         if (userAddress.SELECTED_ADDRESS) View.VISIBLE else View.GONE

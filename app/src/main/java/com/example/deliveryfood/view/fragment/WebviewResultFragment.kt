@@ -4,6 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleRegistry
 import com.example.deliveryfood.R
 import com.example.deliveryfood.base.BaseFragment
 import com.example.deliveryfood.databinding.FragmentSecondBinding
@@ -14,11 +19,19 @@ class WebviewResultFragment : BaseFragment<FragmentSecondBinding, DeliveryAddres
 
     override val layoutResourceId: Int
         get() = R.layout.fragment_second
-    override val viewmodel: DeliveryAddressViewModel by viewModel()
+    override val viewmodel: DeliveryAddressViewModel by activityViewModels<DeliveryAddressViewModel>()
 
+    private lateinit var resultHashMap : HashMap<String, String>
+
+    companion object{
+        fun newInstance(title : String) = WebviewResultFragment().apply {
+            arguments = Bundle().apply {
+                putString("title", title)
+            }
+        }
+    }
 
     override fun initStartView() {
-
     }
 
     override fun initDataBinding() {
@@ -34,11 +47,12 @@ class WebviewResultFragment : BaseFragment<FragmentSecondBinding, DeliveryAddres
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun FragmentSecondBinding.onCreateView() {
-
+        resultHashMap = viewmodel.address_api_result_hashmap.value!!
     }
 
     override fun FragmentSecondBinding.onViewCreated() {
