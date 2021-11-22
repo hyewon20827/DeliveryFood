@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.webkit.*
 import androidx.compose.ui.window.Dialog
 import com.example.deliveryfood.R
+import com.example.deliveryfood.api.dto.KakaoAPI
 import com.example.deliveryfood.base.BaseFragment
 import com.example.deliveryfood.databinding.FragmentFirstBinding
 import com.example.deliveryfood.viewmodel.DeliveryAddressViewModel
@@ -35,6 +36,10 @@ class WebviewFragment : BaseFragment<FragmentFirstBinding, DeliveryAddressViewMo
                 view?.loadUrl(request?.url.toString())
                 return true
             }
+
+//            override fun onPageFinished(view: WebView?, url: String?) {
+//                view?.loadUrl("javascript:execKakaoPostcode();")
+//            }
         }
     }
 
@@ -88,8 +93,6 @@ class WebviewFragment : BaseFragment<FragmentFirstBinding, DeliveryAddressViewMo
         fun processDATA(data : String){
             handler.post(object : Runnable {
                 override fun run() {
-                    Log.d("webview", "invoked $data")
-                    setWebview()
                 }
             })
         }
