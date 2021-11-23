@@ -47,15 +47,19 @@ class WebviewResultFragment : BaseFragment<FragmentSecondBinding, DeliveryAddres
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun FragmentSecondBinding.onCreateView() {
         resultHashMap = viewmodel.address_api_result_hashmap.value!!
+        setViewState()
     }
 
     override fun FragmentSecondBinding.onViewCreated() {
 
+    }
+
+    fun setViewState(){
+        viewDataBinding.mainAddress.text = resultHashMap.get("address")
     }
 }

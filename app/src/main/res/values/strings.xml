@@ -25,7 +25,12 @@
     <string name="previous">Previous</string>
     <string name="network_status_negative">네트워크 상태가 좋지 않습니다. 단말기의 데이터 네트워크, Wi-Fi 연결을 확인해주세요. [A1001]</string>
     <string name="dialog_button_keyword">확인</string>
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_new_address">NewAddressActivity</string>
+    <string name="delivery_fragment_title">배송지</string>
+    <string name="normal_delivery_notice_statement">오늘 주문하면 다음 날 바로 도착해요. (일요일 휴무)</string>
+    <string name="early_delivery_notice_statement">매일 아침, 문 앞까지 신선함을 전해드려요.</string>
+    <string name="sub_address_hint">나머지 주소를 입력해주세요.</string>
+    <string name="default_address_button">기본 배송지로 저장</string>
+    <string name="save_button">저장</string>
+    <string name="warning_message">ⓘ 샛별배송 지역 중 배송 불가 장소 안내</string>
+    <string name="warning_example">관공서 / 학교 / 병원 / 시장 / 공단지역 / 산간지역 / 백화점 등</string>
 </resources>
