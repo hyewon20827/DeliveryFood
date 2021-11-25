@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.deliveryfood">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Deliveryfood"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".view.activity.NewAddressActivity"
             android:exported="false" />
@@ -40,5 +42,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

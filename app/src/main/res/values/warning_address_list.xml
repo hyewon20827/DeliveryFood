@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="address_array">
+        <item>가락동농수산물도매시장</item>
+        <item>가락동농수산물시장</item>
+        <item>가천대학교</item>
+        <item>고려대학교안암캠퍼스</item>
+        <item>고매동 일동(일부지역만 배송가능)</item>
+        <item>국립중앙박물관</item>
+        <item>국민대학교</item>
+        <item>덕성여자대학교</item>
+        <item>덕양구 신원동 일부(일부지역만 배송가능)</item>
+        <item>도내동 일부(원흥지구만 배송가능)</item>
+        <item>동덕여자대학교</item>
+        <item>반월특수지구</item>
+        <item>서경대학교</item>
+        <item>서울사이버대학교</item>
+        <item>서울시립대학교</item>
+        <item>서울여자대학교</item>
+        <item>성균관대학교</item>
+        <item>성신여자대학교</item>
+        <item>세종대학교</item>
+        <item>연세대학교</item>
+        <item>이화여자대학교</item>
+        <item>한국외국어대학교</item>
+        <item>홍익대학교</item>
+    </string-array>
+</resources>
