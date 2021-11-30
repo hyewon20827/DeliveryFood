@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/develop/workspace/Android Studio/Kotlin_Android/deliveryfood/app/src/main/res/layout/activity_main.xml" value="0.21822916666666667" />
+        <entry key="..\:/develop/workspace/Android Studio/Kotlin_Android/deliveryfood/app/src/main/res/layout/chapterlist.xml" value="0.21822916666666667" />
+        <entry key="..\:/develop/workspace/Android Studio/Kotlin_Android/deliveryfood/app/src/main/res/layout/contentlist.xml" value="0.25" />
+        <entry key="..\:/develop/workspace/Android Studio/Kotlin_Android/deliveryfood/app/src/main/res/layout/fragment_second.xml" value="0.1962962962962963" />
         <entry key="..\:/develop/workspace/Android_Studio/deliveryfood2/app/src/main/res/drawable/bottom_nav_selector.xml" value="0.21574074074074073" />
         <entry key="..\:/develop/workspace/Android_Studio/deliveryfood2/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.29010416666666666" />
         <entry key="..\:/develop/workspace/Android_Studio/deliveryfood2/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.20462962962962963" />
