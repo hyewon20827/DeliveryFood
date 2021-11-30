@@ -117,7 +117,7 @@ class WebviewResultFragment : BaseFragment<FragmentSecondBinding, DeliveryAddres
 
         override fun getChildView(p0: Int, p1: Int, p2: Boolean, p3: View?, p4: ViewGroup?): View {
             var convertView = p3
-            val topicTitle = getChild(p0, p1) as String
+            val topicTitle = getChild(p0, p1)
 
             if(convertView == null){
                 val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

@@ -2,6 +2,7 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ImpliedTouchscreenHardware,MissingLeanbackLauncher,MissingLeanbackSupport"
     package="com.example.deliveryfood">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,7 +23,7 @@
 
         <activity
             android:name=".view.activity.NewAddressActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".view.activity.LoginActivity"
             android:exported="true" />
@@ -43,4 +44,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

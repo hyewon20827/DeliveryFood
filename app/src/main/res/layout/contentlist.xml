@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:text="@string/warning_example"
             android:textColor="@color/Secondary_color_gray1"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
     </LinearLayout>
 </layout>
